@@ -6,6 +6,7 @@ import { hashPassword } from '../utils/auth/bcrypt';
 import 'dotenv/config'
 
 
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -16,12 +17,17 @@ async function main() {
   // Upsert ensures we don’t create duplicates if the seed runs multiple times
   const admin = await prisma.admin.upsert({
     where: { email: adminEmail },
+    include: { password: true },
     update: {},
     create: {
       email: adminEmail,
       name: 'System Admin',
-      password: hashedPassword,
       role: 'Admin',
+      password:{
+        create:{
+            hashedPassword:hashedPassword
+        }
+      }
     },
   });
 

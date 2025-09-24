@@ -35,7 +35,6 @@ model Password{
   passengerId      String       @unique
 
   passenger        Passenger @relation(fields: [passengerId], references:[id], onDelete: Cascade)
-
 }
 
 model Driver {
@@ -122,7 +121,15 @@ model Admin {
   email     String   @unique
   role      AdminRole  
   createdAt DateTime @default(now())
-  password  String
+  password  AdminPassword?
+}
+
+model AdminPassword{
+  id               String       @id @default(cuid())
+  hashedPassword   String
+  adminId          String       @unique
+
+  admin            Admin @relation(fields: [adminId], references:[id], onDelete: Cascade)
 }
 
 enum DisabilityType{

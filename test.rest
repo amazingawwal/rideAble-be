@@ -1,0 +1,3 @@
+GET http://localhost:3000/admin/cmfyjunzi00025lgvzmat5ebo
+Content-Type: application/json
+
