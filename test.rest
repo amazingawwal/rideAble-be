@@ -1,3 +1,15 @@
+### Get unique Admin details
 GET http://localhost:3000/admin/cmfyjunzi00025lgvzmat5ebo
 Content-Type: application/json
 
+
+### Create Admin
+POST http://localhost:3000/admin/
+Content-Type: application/json
+
+{
+  "name"  :  "Chris Babatunde",
+  "email" :    "cris_bee@gmail.com",
+  "role"  :   "Dispatcher",
+  "password"  : "crisbe4all!"
+}
