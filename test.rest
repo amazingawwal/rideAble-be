@@ -13,3 +13,16 @@ Content-Type: application/json
   "role"  :   "Dispatcher",
   "password"  : "crisbe4all!"
 }
+
+### Passenger signup
+POST http://localhost:3000/passenger/signup
+Content-Type: application/json
+
+{
+  "name" : "Sakeeb Awwal",
+  "phone": "0811234567",
+  "email": "admin@gmail.com",
+  "disabilityType": "Mobility",
+  "accessibilityNeeds": "Wheelchair space ride",
+  "password": "admin1234"
+}

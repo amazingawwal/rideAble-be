@@ -1,0 +1,37 @@
+import { ForbiddenException, Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { PassengerDto } from './dto/pax.dto';
+import { hashPassword } from 'utils/auth/bcrypt';
+
+@Injectable()
+export class PassengerService {
+
+    constructor(private readonly prisma: PrismaService){}
+
+    async createPassenger(dto:PassengerDto){
+
+        try {
+            const hashedPassword = await hashPassword(dto.password)
+            return await this.prisma.passenger.create({
+                data:{
+                    name:dto.name,
+                    email:dto.email,
+                    phone:dto.phone,
+                    disabilityType:dto.disabilityType,
+                    accessibilityNeeds:dto.accessibilityNeeds,
+                    password:{
+                        create:{
+                            hashedPassword:hashedPassword
+                        }
+                    }
+                }
+        })
+        } catch (error) {
+            if (error.code === 'P2002') {
+                throw new ForbiddenException('Record already exist');
+            }
+        }
+
+
+    }
+}
