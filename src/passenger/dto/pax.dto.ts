@@ -1,23 +1,22 @@
 import { DisabilityType } from '@prisma/client';
 import { IsEmail, IsEnum, IsString } from 'class-validator';
 
-
-export class PassengerDto{
+export class PassengerDto {
   @IsString()
-  name: string ;
+  name: string;
 
   @IsString()
-  phone: string ;
+  phone: string;
 
   @IsEmail()
-  email: string ;
+  email: string;
 
   @IsEnum(DisabilityType)
-  disabilityType: DisabilityType ;
+  disabilityType: DisabilityType;
 
   @IsString()
-  accessibilityNeeds: string ;
+  accessibilityNeeds: string;
 
   @IsString()
-  password: string ;
+  password: string;
 }

@@ -26,3 +26,8 @@ Content-Type: application/json
   "accessibilityNeeds": "Wheelchair space ride",
   "password": "admin1234"
 }
+
+
+### Get user cmfzrbdpq00008efl5q55gmdx
+GET http://localhost:3000/passenger/cmfzrbdpq00008efl5q55gmdx
+Content-Type: application/json
