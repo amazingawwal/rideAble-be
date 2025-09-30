@@ -8,7 +8,6 @@ import { PassengerDto } from './dto/pax.dto';
 import { hashPassword } from 'utils/auth/bcrypt';
 // import ValidationDto from 'src/auth/dto/auth.dto';
 
-
 @Injectable()
 export class PassengerService {
   constructor(private readonly prisma: PrismaService) {}

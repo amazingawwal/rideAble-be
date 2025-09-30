@@ -2,12 +2,10 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { PassengerService } from 'src/passenger/passenger.service';
 import { comparePassword } from 'utils/auth/bcrypt';
 import ValidationDto from './dto/auth.dto';
-// import { Passenger, Password } from 'generated/prisma';
+import { Passenger, Password } from 'generated/prisma';
 
-
-// export type Pax = Passenger & Password;
-// type Pass = Pax[Password]
-
+export type Pax = Passenger & {password: Password};
+// type Pass = Pax['password']
 
 @Injectable()
 export class AuthService {
@@ -15,7 +13,7 @@ export class AuthService {
 
   async validatePax(dto: ValidationDto) {
     try {
-      const pax = await this.passengerService.getPassenger(dto.email);
+      const pax: Pax = await this.passengerService.getPassenger(dto.email);
       const password = await comparePassword(
         dto.password,
         pax.password.hashedPassword,
@@ -25,7 +23,7 @@ export class AuthService {
       }
       return pax;
     } catch (error) {
-      throw new BadRequestException(error,'Invalid Login Credentials');
+      throw new BadRequestException(error, 'Invalid Login Credentials');
     }
   }
 }
