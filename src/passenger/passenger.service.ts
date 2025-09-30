@@ -43,7 +43,7 @@ export class PassengerService {
         include: { password: true },
       });
       if (!pax) {
-        throw new NotFoundException('No Passenger Details Found');
+        throw new NotFoundException('Invalid Credentials.');
       }
       return pax;
     } catch (error: any) {
