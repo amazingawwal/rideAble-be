@@ -29,5 +29,15 @@ Content-Type: application/json
 
 
 ### Get user cmfzrbdpq00008efl5q55gmdx
-GET http://localhost:3000/passenger/cmfzrbdpq00008efl5q55gmdx
+GET http://localhost:3000/passenger/admin@gmail.com
 Content-Type: application/json
+
+
+### Passenger login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "admin1234q"
+}
