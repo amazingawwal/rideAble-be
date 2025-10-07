@@ -13,3 +13,38 @@ Content-Type: application/json
   "role"  :   "Dispatcher",
   "password"  : "crisbe4all!"
 }
+
+### Passenger signup
+POST http://localhost:3000/passenger/signup
+Content-Type: application/json
+
+{
+  "name" : "Sakeeb Awwal",
+  "phone": "0811234567",
+  "email": "admin@gmail.com",
+  "disabilityType": "Mobility",
+  "accessibilityNeeds": "Wheelchair space ride",
+  "password": "admin1234"
+}
+
+
+### Get user cmfzrbdpq00008efl5q55gmdx
+GET http://localhost:3000/passenger/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWZ6cmJkcHEwMDAwOGVmbDVxNTVnbWR4IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzU5ODMwNDQ3LCJleHAiOjE3NTk4MzA1MDd9.eV1-Dh4cLTS-Mn5-gu5CM_xnYyECzVmtJvX4-CWQTWM
+
+
+### Passenger login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "admin1234"
+}
+
+
+### Get Passenger Details - cmfzrbdpq00008efl5q55gmdx
+GET http://localhost:3000/auth/cmfzrbdpq00008efl5q55gmdx
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWZ6cmJkcHEwMDAwOGVmbDVxNTVnbWR4IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzU5ODI5MzkxLCJleHAiOjE3NTk4Mjk0NTF9._T6gTN1aQJh4V8xAkaHIe3JcpDnz2x1oUAVEzpMmYU8
