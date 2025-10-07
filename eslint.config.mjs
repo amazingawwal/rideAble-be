@@ -34,6 +34,7 @@ export default tseslint.config(
       '@typescript-eslint/await-thenable':'warn',
       '@typescript-eslint/require-await':'warn',
       '@typescript-eslint/no-unsafe-assignment':'warn',
+      '@typescript-eslint/no-redundant-type-constituents':'warn'
     },
   },
 );
