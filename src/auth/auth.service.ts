@@ -13,6 +13,11 @@ import { Passenger, Password } from 'generated/prisma';
 
 export type Pax = Passenger & { password: Password };
 // type Pass = Pax['password']
+export type Payload = {
+  sub: Passenger['id'];
+  email: Passenger['email'];
+  name: Passenger['name'];
+};
 
 @Injectable()
 export class AuthService {
@@ -23,18 +28,34 @@ export class AuthService {
 
   async validatePax(dto: ValidationDto) {
     try {
+      //   const pax: Pax = await this.passengerService.getPassenger(dto.email);
+      //   if (!pax) {
+      //     throw new NotFoundException();
+      //   }
+      //   const password = await comparePassword(
+      //     dto.password,
+      //     pax.password.hashedPassword,
+      //   );
+      //   if (!password) {
+      //     throw new NotFoundException('Invalid Credentials');
+      //   }
+      //   const payload = {
+      //   sub: pax.id,
+      //   email: pax.email,
+      //   name: pax.name,
+      // };
+      //   return { pax, access_token: this.jwt.sign(payload) };
+      // return pax;
       const pax: Pax = await this.passengerService.getPassenger(dto.email);
-      if (!pax) {
-        throw new NotFoundException();
+
+      if (
+        pax &&
+        (await comparePassword(dto.password, pax.password.hashedPassword))
+      ) {
+        // const { password, ...details } = pax;
+        return pax;
       }
-      const password = await comparePassword(
-        dto.password,
-        pax.password.hashedPassword,
-      );
-      if (!password) {
-        throw new NotFoundException('Invalid Credentials');
-      }
-      return pax;
+      throw new UnauthorizedException('Invalid credentials');
     } catch (error) {
       if (
         error instanceof ForbiddenException ||
@@ -46,12 +67,16 @@ export class AuthService {
     }
   }
 
-  async login(pax: Pax) {
-    const payload = {
+  // async getProfile(id:string){
+  //   return await this.passengerService.getPassenger(id)
+  // }
+
+  async login(pax: any) {
+    const payload: Payload = {
       sub: pax.id,
       email: pax.email,
       name: pax.name,
     };
-    return { access_token: this.jwt.sign(payload) };
+    return { pax, access_token: this.jwt.sign(payload) };
   }
 }
