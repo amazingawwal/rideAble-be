@@ -10,7 +10,14 @@ import { RidesModule } from './rides/rides.module';
 import { DriverModule } from './driver/driver.module';
 
 @Module({
-  imports: [AdminModule, PassengerModule, UsersModule, AuthModule, RidesModule, DriverModule],
+  imports: [
+    AdminModule,
+    PassengerModule,
+    UsersModule,
+    AuthModule,
+    RidesModule,
+    DriverModule,
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
