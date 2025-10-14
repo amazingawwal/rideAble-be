@@ -38,13 +38,14 @@ model Password{
 }
 
 model Driver {
-  id            String      @id @default(cuid())
+  id            String   @id @default(cuid())
   name          String
-  phone         String
+  phone         String   @unique
   email         String   @unique
   licenseNumber String
-  status        DriverStatus   
+  status        DriverStatus @default(Unavailable)  
   createdAt     DateTime @default(now())
+  licenseExpiry DateTime
 
   vehicles      Vehicle[]
   rides         Ride[]
@@ -57,10 +58,14 @@ model Vehicle {
   driverId             String
   plateNumber          String
   type                 VehicleType    
-  accessibilityFeatures String?
   capacity             Int
-  status               VehicleStatus   
+  status               VehicleStatus   @default(Inactive)
   createdAt            DateTime @default(now())
+  vehicleMake          String
+  vehicleModel         String
+  VehicleYear          DateTime
+  accessibilityFeature AccessibilityFeatures
+  images               String[]
 
   driver   Driver @relation(fields: [driverId], references: [id])
   rides    Ride[]
@@ -200,4 +205,15 @@ enum ContributionType{
   One_Time_Grant
   Per_Ride_Subsidy
   Vehicle_Donation
+}
+
+enum AccessibilityFeatures{
+  Ramps_and_lifts
+  Wide_door_openings
+  Lowered_floors
+  Swivel_seats
+  Wheelchair_restraints
+  Spacious_interior
+  Customizable_seating
+  Others
 }
