@@ -1,11 +1,22 @@
-import { DriverStatus } from "generated/prisma"
+import { DriverStatus } from '@prisma/client'
+import { IsEmail, IsEnum, IsString, IsPhoneNumber, IsDate } from 'class-validator';
 
+export default class DriverDto {
+  @IsString()
+  name: string;
 
-export default class DriverDto{
-  name         : string
-  phone        : string
-  email        : string
-  licenseNumber: string
-  licenseExpiry: Date
-  driverStatus : DriverStatus
+  @IsPhoneNumber()
+  phone: string;
+
+  @IsEmail()
+  email: string;
+
+  @IsString()
+  licenseNumber: string;
+
+  @IsDate()
+  licenseExpiry: Date;
+
+  @IsEnum(DriverStatus)
+  driverStatus: DriverStatus;
 }

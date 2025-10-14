@@ -48,3 +48,16 @@ Content-Type: application/json
 GET http://localhost:3000/auth/cmfzrbdpq00008efl5q55gmdx
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWZ6cmJkcHEwMDAwOGVmbDVxNTVnbWR4IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzU5ODI5MzkxLCJleHAiOjE3NTk4Mjk0NTF9._T6gTN1aQJh4V8xAkaHIe3JcpDnz2x1oUAVEzpMmYU8
+
+
+### Create Driver date format yyyy-mm-dd
+POST http://localhost:3000/registration/driver
+Content-Type: application/json
+
+{
+  "name": "Victor Eden",
+  "email": "eden4vic@gmail.com",
+  "phone": "0813456789",
+  "licenseNumber": "234-333-354",
+  "licenseExpiry": "2030-12-12"
+}

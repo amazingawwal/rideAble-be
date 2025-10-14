@@ -4,18 +4,19 @@ import DriverDto from './dto/driver.dto';
 
 @Injectable()
 export class DriverService {
-    constructor( private readonly prisma: PrismaService){}
+  constructor(private readonly prisma: PrismaService) {}
 
+  async createDriver(dto: DriverDto) {
+    const driver = await this.prisma.driver.create({
+      data: {
+        name: dto.name,
+        email: dto.email,
+        phone: dto.phone,
+        licenseNumber: dto.licenseNumber,
+        licenseExpiry: new Date(dto.licenseExpiry),
+      },
+    });
 
-    async createDriver(dto:DriverDto){
-        const driver = await this.prisma.driver.create({data:{ 
-            name  : dto.name,  
-            email : dto.email,
-            phone : dto.phone,
-            licenseNumber : dto.licenseNumber,
-            licenseExpiry : dto.licenseExpiry,
-        }})
-
-        return driver;
-    }
+    return driver;
+  }
 }
