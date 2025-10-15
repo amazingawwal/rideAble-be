@@ -55,7 +55,7 @@ model Driver {
 
 model Vehicle {
   id                   String      @id @default(cuid())
-  driverId             String
+  driverEmail          String      @unique
   plateNumber          String
   type                 VehicleType    
   capacity             Int
@@ -64,10 +64,10 @@ model Vehicle {
   vehicleMake          String
   vehicleModel         String
   VehicleYear          DateTime
-  accessibilityFeature AccessibilityFeatures
+  accessibilityFeature AccessibilityFeatures[]
   images               String[]
 
-  driver   Driver @relation(fields: [driverId], references: [id])
+  driver   Driver @relation(fields: [driverEmail], references: [email])
   rides    Ride[]
 }
 
