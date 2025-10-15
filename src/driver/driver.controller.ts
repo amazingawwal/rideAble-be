@@ -13,7 +13,7 @@ export class DriverController {
   }
 
   @Post('vehicle')
-  async registerVehicle(@Body()dto:VehicleDto){
-    return await this.driverService.vehicleReg(dto)
+  async registerVehicle(@Body() dto: VehicleDto) {
+    return await this.driverService.vehicleReg(dto);
   }
 }

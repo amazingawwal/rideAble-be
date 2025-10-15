@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 
 
-### Create Vehicle cmgr5n1w9000089fpli70y80t
+### Create Vehicle cmgreklhy0008d9f6u2qplej9
 POST http://localhost:3000/registration/vehicle
 Content-Type: application/json
 
@@ -75,6 +75,6 @@ Content-Type: application/json
   "vehicleModel": "Sienna",
   "images": ["first.jpg", "second.jpeg"],
   "VehicleYear": "2020",
-  "accessibilityFeature": "Ramps_and_lifts",
-  "driverId": "cmgr5n1w9000089fpli70y80t"
+  "accessibilityFeature": ["Ramps_and_lifts", "Wide_door_openings"],
+  "driverEmail": "eden4vic@gmail.com"
 }
