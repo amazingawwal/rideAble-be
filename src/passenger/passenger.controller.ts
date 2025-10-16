@@ -35,6 +35,7 @@ export class PassengerController {
   @Get('profile')
   @UseGuards(JwtAuthGuard)
   getProfile(@Request() req: any) {
+    console.log('req');
     return req.user; // comes from validate() in JwtStrategy
   }
 }

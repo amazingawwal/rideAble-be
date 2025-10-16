@@ -71,7 +71,7 @@ export class AuthService {
   //   return await this.passengerService.getPassenger(id)
   // }
 
-  async login(pax: any) {
+  async login(pax: Pax) {
     const payload: Payload = {
       sub: pax.id,
       email: pax.email,
