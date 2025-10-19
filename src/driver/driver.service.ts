@@ -3,10 +3,13 @@ import {
   ForbiddenException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import DriverDto from './dto/driver.dto';
 import VehicleDto from './dto/vehicle.dto';
+
+
 
 @Injectable()
 export class DriverService {
@@ -49,26 +52,36 @@ export class DriverService {
   // expiry date must be greater than current date or 3 months validity required
 
   async vehicleReg(dto: VehicleDto) {
-    const driver = await this.getUniqueDriver(dto.driverEmail);
+    try {
+      await this.getUniqueDriver(dto.driverEmail);
 
-    if (!driver) {
-      throw new BadRequestException("Enter your details on the Drivers' Tab");
+      const vehicle = await this.prisma.vehicle.create({
+        data: {
+          plateNumber: dto.plateNumber,
+          type: dto.type,
+          capacity: dto.capacity,
+          vehicleMake: dto.vehicleMake,
+          vehicleModel: dto.vehicleModel,
+          images: dto.images,
+          VehicleYear: new Date(dto.VehicleYear),
+          accessibilityFeature: dto.accessibilityFeature,
+          driverEmail: dto.driverEmail,
+        },
+      });
+
+      return vehicle;
+    } catch (error) {
+      if (error.code === 'P2002') {
+        throw new ForbiddenException('Record already exist');
+      }
+      else if (
+        error instanceof ForbiddenException ||
+        error instanceof UnauthorizedException ||
+        error instanceof NotFoundException ||
+        error instanceof BadRequestException
+      ) {
+        throw error;
+      }
     }
-
-    const vehicle = await this.prisma.vehicle.create({
-      data: {
-        plateNumber: dto.plateNumber,
-        type: dto.type,
-        capacity: dto.capacity,
-        vehicleMake: dto.vehicleMake,
-        vehicleModel: dto.vehicleModel,
-        images: dto.images,
-        VehicleYear: new Date(dto.VehicleYear),
-        accessibilityFeature: dto.accessibilityFeature,
-        driverEmail: dto.driverEmail,
-      },
-    });
-
-    return vehicle;
   }
 }
