@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -12,17 +13,23 @@ export class DriverService {
   constructor(private readonly prisma: PrismaService) {}
 
   async createDriver(dto: DriverDto) {
-    const driver = await this.prisma.driver.create({
-      data: {
-        name: dto.name,
-        email: dto.email,
-        phone: dto.phone,
-        licenseNumber: dto.licenseNumber,
-        licenseExpiry: new Date(dto.licenseExpiry),
-      },
-    });
+    try {
+      const driver = await this.prisma.driver.create({
+        data: {
+          name: dto.name,
+          email: dto.email,
+          phone: dto.phone,
+          licenseNumber: dto.licenseNumber,
+          licenseExpiry: new Date(dto.licenseExpiry),
+        },
+      });
 
-    return driver;
+      return driver;
+    } catch (error) {
+      if (error.code === 'P2002') {
+        throw new ForbiddenException('Record already exist');
+      }
+    }
   }
 
   async getUniqueDriver(email: string) {

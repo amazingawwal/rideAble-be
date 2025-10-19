@@ -46,17 +46,19 @@ Content-Type: application/json
 ### Get Passenger Details - cmgreja7j0006d9f6qe7gdbof
 GET http://localhost:3000/passenger/admin@gmail.com
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwNTAyMzg2LCJleHAiOjE3NjA1MDU5ODZ9.4jdGmwZWFXOQp8yTAAZvHEBH4yqZepgQawhRJl1Peqk
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwOTEyODcxLCJleHAiOjE3NjA5MTY0NzF9.6v74PMpe-V_B4gtbqueJN0KBen3x1w5gapjsS0sMW5Y
 
 ### Get Passenger Details (JWT) - cmgreja7j0006d9f6qe7gdbof
 GET http://localhost:3000/passenger/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwNTAyMzg2LCJleHAiOjE3NjA1MDU5ODZ9.4jdGmwZWFXOQp8yTAAZvHEBH4yqZepgQawhRJl1Peqk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwOTEyODcxLCJleHAiOjE3NjA5MTY0NzF9.6v74PMpe-V_B4gtbqueJN0KBen3x1w5gapjsS0sMW5Y
+
 
 ### Create Driver date format yyyy-mm-dd cmgr5n1w9000089fpli70y80t
 POST http://localhost:3000/registration/driver
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwOTEyODcxLCJleHAiOjE3NjA5MTY0NzF9.6v74PMpe-V_B4gtbqueJN0KBen3x1w5gapjsS0sMW5Y
+
 
 {
   "name": "Victor Eden",
@@ -67,9 +69,11 @@ Content-Type: application/json
 }
 
 
-### Create Vehicle cmgreklhy0008d9f6u2qplej9
+### Create Vehicle cmgreklhy0008d9f6u2qplej9 P2002
 POST http://localhost:3000/registration/vehicle
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwOTEyODcxLCJleHAiOjE3NjA5MTY0NzF9.6v74PMpe-V_B4gtbqueJN0KBen3x1w5gapjsS0sMW5Y
+
 
 {       
   "plateNumber" : "KWA-R5LS",
