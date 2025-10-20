@@ -8,12 +8,19 @@ import {
 import { PrismaService } from 'src/prisma/prisma.service';
 import DriverDto from './dto/driver.dto';
 import VehicleDto from './dto/vehicle.dto';
+import { JwtService } from '@nestjs/jwt';
+import { Driver } from '@prisma/client';
 
 
+export type DriverPayload = {
+  sub: Driver['id'];
+  email: Driver['email'];
+  name: Driver['name'];
+};
 
 @Injectable()
 export class DriverService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService, private readonly jwt:JwtService ) {}
 
   async createDriver(dto: DriverDto) {
     try {
@@ -73,8 +80,7 @@ export class DriverService {
     } catch (error) {
       if (error.code === 'P2002') {
         throw new ForbiddenException('Record already exist');
-      }
-      else if (
+      } else if (
         error instanceof ForbiddenException ||
         error instanceof UnauthorizedException ||
         error instanceof NotFoundException ||
@@ -84,4 +90,20 @@ export class DriverService {
       }
     }
   }
+  
+  async driverSignin(driver:DriverPayload){
+    const driverPayload = {
+      sub: driver.sub,
+      email: driver.email,
+      name: driver.name,
+    }
+
+    return {
+      driver, access_token: this.jwt.sign(driverPayload, 
+        {secret: process.env.DRIVER_JWT_SECRET,
+      expiresIn: process.env.DRIVER_JWT_SIGN_EXP} ,)
+    }
+  }
 }
+
+

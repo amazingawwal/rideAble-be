@@ -26,3 +26,17 @@ export default class DriverDto {
   @IsEnum(DriverStatus)
   driverStatus: DriverStatus;
 }
+
+
+export class DriverPayloadDto {
+
+  @IsString()
+  sub: string;
+
+  @IsPhoneNumber()
+  name: string;
+
+  @IsEmail()
+  email: string;
+
+}
