@@ -98,7 +98,6 @@ export class DriverService {
   // }
 
   async driverSignin(driver: DriverPayload) {
-
     await this.getUniqueDriver(driver.email);
 
     const driverPayload = {

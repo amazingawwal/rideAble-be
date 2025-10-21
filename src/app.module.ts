@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { RidesModule } from './rides/rides.module';
 import { DriverModule } from './driver/driver.module';
+import { MapboxService } from './mapbox/mapbox.service';
 
 @Module({
   imports: [
@@ -19,6 +20,6 @@ import { DriverModule } from './driver/driver.module';
     DriverModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService],
+  providers: [AppService, PrismaService, MapboxService],
 })
 export class AppModule {}
