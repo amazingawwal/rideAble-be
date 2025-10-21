@@ -94,11 +94,13 @@ export class DriverService {
   }
 
   // async validateDriver(){
-    
+
   // }
 
-
   async driverSignin(driver: DriverPayload) {
+
+    await this.getUniqueDriver(driver.email);
+
     const driverPayload = {
       sub: driver.sub,
       email: driver.email,
@@ -114,4 +116,3 @@ export class DriverService {
     };
   }
 }
-
