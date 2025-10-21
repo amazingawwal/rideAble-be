@@ -9,9 +9,6 @@ import { PassportModule } from '@nestjs/passport';
 @Module({
   controllers: [DriverController],
   providers: [DriverService, PrismaService, JwtStrategy],
-    imports: [
-      PassportModule,
-      JwtModule.register({}),
-    ],
+  imports: [PassportModule, JwtModule.register({})],
 })
 export class DriverModule {}

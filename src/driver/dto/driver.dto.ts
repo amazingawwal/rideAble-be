@@ -27,16 +27,13 @@ export default class DriverDto {
   driverStatus: DriverStatus;
 }
 
-
 export class DriverPayloadDto {
-
   @IsString()
   sub: string;
 
   @IsPhoneNumber()
-  name: string;
+  phone: string;
 
   @IsEmail()
   email: string;
-
 }

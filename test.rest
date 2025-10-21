@@ -94,7 +94,7 @@ Content-Type: application/json
 {
   "email": "eden4vic@gmail.com",
   "sub": "cmgreklhy0008d9f6u2qplej9",
-  "name": "Victor Eden"
+  "phone": "0813456789"
 }
 
 ###

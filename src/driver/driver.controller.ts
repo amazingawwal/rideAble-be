@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { DriverService } from './driver.service';
 import DriverDto from './dto/driver.dto';
 import VehicleDto from './dto/vehicle.dto';
@@ -23,14 +30,14 @@ export class DriverController {
   }
 
   @Post('sign-in')
-  async driverSign_in(@Body() dto:DriverPayloadDto){
-    return await this.driverService.driverSignin(dto)
+  async driverSign_in(@Body() dto: DriverPayloadDto) {
+    return await this.driverService.driverSignin(dto);
   }
 
   @Get('profile')
   @UseGuards(DriverJWTGuard)
   getProfile(@Request() req: any) {
-      // console.log(req);
-      return req.user;
-    }
+    // console.log(req);
+    return req.user;
+  }
 }

@@ -77,9 +77,12 @@ export class AuthService {
       email: pax.email,
       name: pax.name,
     };
-    return { pax, access_token: this.jwt.sign(payload, {
-      secret: process.env.JWT_SECRET,
-      expiresIn: process.env.JWT_SIGN_EXP ,
-    }) };
+    return {
+      pax,
+      access_token: this.jwt.sign(payload, {
+        secret: process.env.JWT_SECRET,
+        expiresIn: process.env.JWT_SIGN_EXP,
+      }),
+    };
   }
 }

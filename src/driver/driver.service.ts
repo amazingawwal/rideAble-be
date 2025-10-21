@@ -11,16 +11,18 @@ import VehicleDto from './dto/vehicle.dto';
 import { JwtService } from '@nestjs/jwt';
 import { Driver } from '@prisma/client';
 
-
 export type DriverPayload = {
   sub: Driver['id'];
   email: Driver['email'];
-  name: Driver['name'];
+  phone: Driver['phone'];
 };
 
 @Injectable()
 export class DriverService {
-  constructor(private readonly prisma: PrismaService, private readonly jwt:JwtService ) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly jwt: JwtService,
+  ) {}
 
   async createDriver(dto: DriverDto) {
     try {
@@ -90,20 +92,26 @@ export class DriverService {
       }
     }
   }
-  
-  async driverSignin(driver:DriverPayload){
+
+  // async validateDriver(){
+    
+  // }
+
+
+  async driverSignin(driver: DriverPayload) {
     const driverPayload = {
       sub: driver.sub,
       email: driver.email,
-      name: driver.name,
-    }
+      phone: driver.phone,
+    };
 
     return {
-      driver, access_token: this.jwt.sign(driverPayload, 
-        {secret: process.env.DRIVER_JWT_SECRET,
-      expiresIn: process.env.DRIVER_JWT_SIGN_EXP} ,)
-    }
+      driver,
+      access_token: this.jwt.sign(driverPayload, {
+        secret: process.env.DRIVER_JWT_SECRET,
+        expiresIn: process.env.DRIVER_JWT_SIGN_EXP,
+      }),
+    };
   }
 }
-
 
