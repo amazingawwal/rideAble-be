@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { RidesModule } from './rides/rides.module';
 import { DriverModule } from './driver/driver.module';
 import { MapboxService } from './mapbox/mapbox.service';
+import { OrsModule } from './ors/ors.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { MapboxService } from './mapbox/mapbox.service';
     AuthModule,
     RidesModule,
     DriverModule,
+    OrsModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService, MapboxService],
