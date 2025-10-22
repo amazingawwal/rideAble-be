@@ -1,20 +1,20 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import axios from 'axios';
+import { RideRequestDto } from 'src/rides/dto/request.dto';
 
 @Injectable()
 export class OrsService {
   private readonly baseUrl = 'https://api.openrouteservice.org/v2/directions';
 
   async getRoute(
-    pickup: [number, number],
-    destination: [number, number],
+    dto : RideRequestDto,
     profile: string = 'driving-car',
   ) {
     try {
       const response = await axios.post(
         `${this.baseUrl}/${profile}/geojson`,
         {
-          coordinates: [pickup, destination],
+          coordinates: [dto.pickup, dto.destination],
         },
         {
           headers: {

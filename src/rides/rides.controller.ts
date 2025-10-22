@@ -1,7 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { RidesService } from './rides.service';
+import { RideRequestDto } from './dto/request.dto';
 
 @Controller('rides')
 export class RidesController {
   constructor(private readonly ridesService: RidesService) {}
+
+  @Post()
+  async rideRequest(@Body() dto: RideRequestDto) {
+    return this.ridesService.requestRide(dto)
+  }
 }

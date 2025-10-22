@@ -8,7 +8,6 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { RidesModule } from './rides/rides.module';
 import { DriverModule } from './driver/driver.module';
-import { MapboxService } from './mapbox/mapbox.service';
 import { OrsModule } from './ors/ors.module';
 
 @Module({
@@ -22,6 +21,6 @@ import { OrsModule } from './ors/ors.module';
     OrsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService, MapboxService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}
