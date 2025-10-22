@@ -10,7 +10,6 @@ export class RidesService {
   ) {}
 
   async requestRide(
-    riderId: string,
     data: {
       pickup: [number, number];
       destination: [number, number];
@@ -22,6 +21,7 @@ export class RidesService {
     }
 
     // 🧭 Get route details from ORS
-    // const route = await this.orsService.getRoute(data.pickup, data.destination);
+    const route = await this.orsService.getRoute(data.pickup, data.destination);
+    return route;
   }
 }
