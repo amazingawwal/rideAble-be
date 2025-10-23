@@ -1,11 +1,11 @@
-import { IsArray, IsString } from 'class-validator';
+// import { IsArray,  IsNumber, IsString } from 'class-validator';
 
 export class RideRequestDto {
-  @IsArray()
-  @IsString({ each: true })
-  pickup: string[];
+//   @IsArray()
+//   @IsNumber({ each: true })
+  pickup: number[];
 
-  @IsArray()
-  @IsString({ each: true })
-  destination: string[];
+//   @IsArray()
+//   @IsNumber({ each: true })
+  destination: number[];
 }

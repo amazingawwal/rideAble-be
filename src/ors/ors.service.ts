@@ -6,10 +6,7 @@ import { RideRequestDto } from 'src/rides/dto/request.dto';
 export class OrsService {
   private readonly baseUrl = 'https://api.openrouteservice.org/v2/directions';
 
-  async getRoute(
-    dto : RideRequestDto,
-    profile: string = 'driving-car',
-  ) {
+  async getRoute(dto: RideRequestDto, profile: string = 'driving-car') {
     try {
       const response = await axios.post(
         `${this.baseUrl}/${profile}/geojson`,
@@ -23,6 +20,8 @@ export class OrsService {
           },
         },
       );
+
+      console.log('pickup:', dto.pickup, 'destination:', dto.destination)
 
       const routeFeature = response.data.features[0];
       const { summary, geometry } = routeFeature.properties;

@@ -10,7 +10,8 @@ export class RidesService {
     private orsService: OrsService,
   ) {}
 
-  async requestRide(data: RideRequestDto
+  async requestRide(
+    data: RideRequestDto,
     // accessibility?: string;
   ) {
     if (!data.pickup || !data.destination) {
@@ -18,7 +19,7 @@ export class RidesService {
     }
 
     // 🧭 Get route details from ORS
-    const route = await this.orsService.getRoute(data.pickup, data.destination);
+    const route = await this.orsService.getRoute(data);
     return route;
   }
 }

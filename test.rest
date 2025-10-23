@@ -101,3 +101,12 @@ Content-Type: application/json
 GET http://localhost:3000/registration/profile
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWtsaHkwMDA4ZDlmNnUycXBsZWo5IiwiZW1haWwiOiJlZGVuNHZpY0BnbWFpbC5jb20iLCJuYW1lIjoiVmljdG9yIEVkZW4iLCJpYXQiOjE3NjA5NTY3NTUsImV4cCI6MTc2MDk2MDM1NX0.R20WFcofMeHi2SSfP6yR047ievuapvRBKYzZQuZYNMs
+
+###
+POST http://localhost:3000/rides/request
+Content-Type: application/json
+
+{
+  "pickup": [3.4505, 6.4531],
+  "destination": [3.3841, 6.5244]
+}

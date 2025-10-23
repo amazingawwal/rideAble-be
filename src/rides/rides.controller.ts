@@ -6,8 +6,8 @@ import { RideRequestDto } from './dto/request.dto';
 export class RidesController {
   constructor(private readonly ridesService: RidesService) {}
 
-  @Post()
+  @Post('request')
   async rideRequest(@Body() dto: RideRequestDto) {
-    return this.ridesService.requestRide(dto)
+    return this.ridesService.requestRide(dto);
   }
 }
