@@ -21,7 +21,7 @@ export class OrsService {
         },
       );
 
-      console.log('pickup:', dto.pickup, 'destination:', dto.destination)
+      console.log('pickup:', dto.pickup, 'destination:', dto.destination);
 
       const routeFeature = response.data.features[0];
       const { summary, geometry } = routeFeature.properties;
