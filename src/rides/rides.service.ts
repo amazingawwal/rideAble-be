@@ -21,5 +21,10 @@ export class RidesService {
     // 🧭 Get route details from ORS
     const route = await this.orsService.getRoute(data);
     return route;
+
+  }
+
+  async cancelRide(){
+    return {}
   }
 }
