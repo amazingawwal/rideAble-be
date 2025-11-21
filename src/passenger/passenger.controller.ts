@@ -2,7 +2,7 @@ import {
   Body,
   Controller,
   Get,
-  Param,
+  // Param,
   Post,
   Request,
   UseGuards,
@@ -26,15 +26,16 @@ export class PassengerController {
   //   return await this.passengerService.getUser(id);
   // }
 
-  @UseGuards(JwtAuthGuard)
-  @Get(':email')
-  async getPassenger(@Param('email') email: string) {
-    return await this.passengerService.getPassenger(email);
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get(':email')
+  // async getPassenger(@Param('email') email: string) {
+  //   return await this.passengerService.getPassenger(email);
+  // }
 
   @Get('profile')
   @UseGuards(JwtAuthGuard)
   getProfile(@Request() req: any) {
-    return req.user; // comes from validate() in JwtStrategy
+    // console.log(req);
+    return req.user;
   }
 }

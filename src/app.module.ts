@@ -8,6 +8,8 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { RidesModule } from './rides/rides.module';
 import { DriverModule } from './driver/driver.module';
+import { OrsModule } from './ors/ors.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { DriverModule } from './driver/driver.module';
     AuthModule,
     RidesModule,
     DriverModule,
+    OrsModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
