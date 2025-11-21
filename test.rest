@@ -31,8 +31,7 @@ Content-Type: application/json
 ### Get user cmfzrbdpq00008efl5q55gmdx
 GET http://localhost:3000/passenger/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWZ6cmJkcHEwMDAwOGVmbDVxNTVnbWR4IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzU5ODMwNDQ3LCJleHAiOjE3NTk4MzA1MDd9.eV1-Dh4cLTS-Mn5-gu5CM_xnYyECzVmtJvX4-CWQTWM
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwNTAyMzg2LCJleHAiOjE3NjA1MDU5ODZ9.4jdGmwZWFXOQp8yTAAZvHEBH4yqZepgQawhRJl1Peqk
 
 ### Passenger login
 POST http://localhost:3000/auth/login
@@ -44,7 +43,68 @@ Content-Type: application/json
 }
 
 
-### Get Passenger Details - cmfzrbdpq00008efl5q55gmdx
-GET http://localhost:3000/auth/cmfzrbdpq00008efl5q55gmdx
+### Get Passenger Details - cmgreja7j0006d9f6qe7gdbof
+GET http://localhost:3000/passenger/admin@gmail.com
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWZ6cmJkcHEwMDAwOGVmbDVxNTVnbWR4IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzU5ODI5MzkxLCJleHAiOjE3NTk4Mjk0NTF9._T6gTN1aQJh4V8xAkaHIe3JcpDnz2x1oUAVEzpMmYU8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwOTEyODcxLCJleHAiOjE3NjA5MTY0NzF9.6v74PMpe-V_B4gtbqueJN0KBen3x1w5gapjsS0sMW5Y
+
+### Get Passenger Details (JWT) - cmgreja7j0006d9f6qe7gdbof
+GET http://localhost:3000/passenger/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWtsaHkwMDA4ZDlmNnUycXBsZWo5IiwiZW1haWwiOiJlZGVuNHZpY0BnbWFpbC5jb20iLCJuYW1lIjoiVmljdG9yIEVkZW4iLCJpYXQiOjE3NjA5NTYwMjAsImV4cCI6MTc2MDk1OTYyMH0.yWksSrJROcAmbaSLFFdGI8ZNz5C9sSJW_H7r-GuMkn0
+
+### Create Driver date format yyyy-mm-dd cmgr5n1w9000089fpli70y80t cmhvmn9s40000dlcz11cqi72i
+POST http://localhost:3000/registration/driver
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwOTEyODcxLCJleHAiOjE3NjA5MTY0NzF9.6v74PMpe-V_B4gtbqueJN0KBen3x1w5gapjsS0sMW5Y
+
+
+{
+  "name": "Victor Eden Jnr",
+  "email": "jnreden4vic@gmail.com",
+  "phone": "0813456700",
+  "licenseNumber": "234-333-354",
+  "licenseExpiry": "2030-12-24"
+}
+
+
+### Create Vehicle cmgreklhy0008d9f6u2qplej9 P2002
+POST http://localhost:3000/registration/vehicle
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwOTEyODcxLCJleHAiOjE3NjA5MTY0NzF9.6v74PMpe-V_B4gtbqueJN0KBen3x1w5gapjsS0sMW5Y
+
+
+{       
+  "plateNumber" : "KWA-R5LS",
+  "type": "Van",
+  "capacity": 6,
+  "vehicleMake": "Sienna",
+  "vehicleModel": "Sienna",
+  "images": ["first.jpg", "second.jpeg"],
+  "VehicleYear": "2020",
+  "accessibilityFeature": ["Ramps_and_lifts", "Wide_door_openings"],
+  "driverEmail": "qeden4vic@gmail.com"
+}
+
+
+### Driver login 
+POST http://localhost:3000/registration/sign-in
+Content-Type: application/json
+
+{
+  "email": "eden4vic@gmail.com" ,
+  "phone": "0813456789"
+}
+
+###
+GET http://localhost:3000/registration/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZW40dmljQGdtYWlsLmNvbSIsInBob25lIjoiMDgxMzQ1Njc4OSIsImlhdCI6MTc2MzA0NDAzNiwiZXhwIjoxNzYzMDQ3NjM2fQ.CyTepnhehll0XGLkfkICoKTr1TJn13a6i4x4PwQkWQY
+###
+POST http://localhost:3000/rides/request
+Content-Type: application/json
+
+{
+  "pickup": [3.4505, 6.4531],
+  "destination": [3.3841, 6.5244]
+}

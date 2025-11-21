@@ -7,9 +7,8 @@ import {
 import { PassengerService } from 'src/passenger/passenger.service';
 import { comparePassword } from 'utils/auth/bcrypt';
 import ValidationDto from './dto/auth.dto';
-// import { Passenger, Password } from '@prisma/client';
+import { Passenger, Password } from '@prisma/client';
 import { JwtService } from '@nestjs/jwt';
-import { Passenger, Password } from 'generated/prisma';
 
 export type Pax = Passenger & { password: Password };
 // type Pass = Pax['password']
@@ -71,12 +70,18 @@ export class AuthService {
   //   return await this.passengerService.getPassenger(id)
   // }
 
-  async login(pax: any) {
+  async login(pax: Pax) {
     const payload: Payload = {
       sub: pax.id,
       email: pax.email,
       name: pax.name,
     };
-    return { pax, access_token: this.jwt.sign(payload) };
+    return {
+      pax,
+      access_token: this.jwt.sign(payload, {
+        secret: process.env.JWT_SECRET,
+        expiresIn: process.env.JWT_SIGN_EXP,
+      }),
+    };
   }
 }
