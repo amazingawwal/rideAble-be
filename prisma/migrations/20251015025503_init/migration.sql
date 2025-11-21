@@ -31,6 +31,9 @@ CREATE TYPE "public"."DonorType" AS ENUM ('NGO', 'Government', 'Corporate_CSR', 
 -- CreateEnum
 CREATE TYPE "public"."ContributionType" AS ENUM ('One_Time_Grant', 'Per_Ride_Subsidy', 'Vehicle_Donation');
 
+-- CreateEnum
+CREATE TYPE "public"."AccessibilityFeatures" AS ENUM ('Ramps_and_lifts', 'Wide_door_openings', 'Lowered_floors', 'Swivel_seats', 'Wheelchair_restraints', 'Spacious_interior', 'Customizable_seating', 'Others');
+
 -- CreateTable
 CREATE TABLE "public"."Passenger" (
     "id" TEXT NOT NULL,
@@ -60,8 +63,9 @@ CREATE TABLE "public"."Driver" (
     "phone" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "licenseNumber" TEXT NOT NULL,
-    "status" "public"."DriverStatus" NOT NULL,
+    "status" "public"."DriverStatus" NOT NULL DEFAULT 'Unavailable',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "licenseExpiry" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Driver_pkey" PRIMARY KEY ("id")
 );
@@ -69,13 +73,17 @@ CREATE TABLE "public"."Driver" (
 -- CreateTable
 CREATE TABLE "public"."Vehicle" (
     "id" TEXT NOT NULL,
-    "driverId" TEXT NOT NULL,
+    "driverEmail" TEXT NOT NULL,
     "plateNumber" TEXT NOT NULL,
     "type" "public"."VehicleType" NOT NULL,
-    "accessibilityFeatures" TEXT,
     "capacity" INTEGER NOT NULL,
-    "status" "public"."VehicleStatus" NOT NULL,
+    "status" "public"."VehicleStatus" NOT NULL DEFAULT 'Inactive',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "vehicleMake" TEXT NOT NULL,
+    "vehicleModel" TEXT NOT NULL,
+    "VehicleYear" TIMESTAMP(3) NOT NULL,
+    "accessibilityFeature" "public"."AccessibilityFeatures"[],
+    "images" TEXT[],
 
     CONSTRAINT "Vehicle_pkey" PRIMARY KEY ("id")
 );
@@ -92,6 +100,7 @@ CREATE TABLE "public"."Ride" (
     "status" "public"."RideStatus" NOT NULL,
     "requestedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "completedAt" TIMESTAMP(3),
+    "accessNeeds" TEXT,
 
     CONSTRAINT "Ride_pkey" PRIMARY KEY ("id")
 );
@@ -133,6 +142,15 @@ CREATE TABLE "public"."Admin" (
     CONSTRAINT "Admin_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "public"."AdminPassword" (
+    "id" TEXT NOT NULL,
+    "hashedPassword" TEXT NOT NULL,
+    "adminId" TEXT NOT NULL,
+
+    CONSTRAINT "AdminPassword_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Passenger_email_key" ON "public"."Passenger"("email");
 
@@ -140,7 +158,13 @@ CREATE UNIQUE INDEX "Passenger_email_key" ON "public"."Passenger"("email");
 CREATE UNIQUE INDEX "Password_passengerId_key" ON "public"."Password"("passengerId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Driver_phone_key" ON "public"."Driver"("phone");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Driver_email_key" ON "public"."Driver"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Vehicle_driverEmail_key" ON "public"."Vehicle"("driverEmail");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Payment_rideId_key" ON "public"."Payment"("rideId");
@@ -148,11 +172,14 @@ CREATE UNIQUE INDEX "Payment_rideId_key" ON "public"."Payment"("rideId");
 -- CreateIndex
 CREATE UNIQUE INDEX "Admin_email_key" ON "public"."Admin"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "AdminPassword_adminId_key" ON "public"."AdminPassword"("adminId");
+
 -- AddForeignKey
 ALTER TABLE "public"."Password" ADD CONSTRAINT "Password_passengerId_fkey" FOREIGN KEY ("passengerId") REFERENCES "public"."Passenger"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."Vehicle" ADD CONSTRAINT "Vehicle_driverId_fkey" FOREIGN KEY ("driverId") REFERENCES "public"."Driver"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."Vehicle" ADD CONSTRAINT "Vehicle_driverEmail_fkey" FOREIGN KEY ("driverEmail") REFERENCES "public"."Driver"("email") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "public"."Ride" ADD CONSTRAINT "Ride_passengerId_fkey" FOREIGN KEY ("passengerId") REFERENCES "public"."Passenger"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -168,3 +195,6 @@ ALTER TABLE "public"."Payment" ADD CONSTRAINT "Payment_rideId_fkey" FOREIGN KEY 
 
 -- AddForeignKey
 ALTER TABLE "public"."Payment" ADD CONSTRAINT "Payment_donorId_fkey" FOREIGN KEY ("donorId") REFERENCES "public"."Donor"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "public"."AdminPassword" ADD CONSTRAINT "AdminPassword_adminId_fkey" FOREIGN KEY ("adminId") REFERENCES "public"."Admin"("id") ON DELETE CASCADE ON UPDATE CASCADE;

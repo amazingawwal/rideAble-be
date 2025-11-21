@@ -11,7 +11,8 @@ export class AuthController {
   @Post('login')
   async validatePassenger(@Body() dto: ValidationDto) {
     const pax = await this.authService.validatePax(dto);
-    return this.authService.login(pax);
+
+    return this.authService.login(pax!);
   }
 
   // @UseGuards(JwtAuthGuard)
