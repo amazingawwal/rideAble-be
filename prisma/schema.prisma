@@ -134,7 +134,6 @@ model AdminPassword{
   id               String       @id @default(cuid())
   hashedPassword   String
   adminId          String       @unique
-
   admin            Admin @relation(fields: [adminId], references:[id], onDelete: Cascade)
 }
 

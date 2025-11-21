@@ -9,7 +9,7 @@ import {
 import { DriverService } from './driver.service';
 import DriverDto from './dto/driver.dto';
 import VehicleDto from './dto/vehicle.dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+// import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { DriverPayloadDto } from './dto/driver.dto';
 import { DriverJWTGuard } from './guard/driver-jwt.guard';
 
@@ -18,13 +18,13 @@ export class DriverController {
   constructor(private readonly driverService: DriverService) {}
 
   @Post('driver')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   async createDriver(@Body() dto: DriverDto) {
     return await this.driverService.createDriver(dto);
   }
 
   @Post('vehicle')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   async registerVehicle(@Body() dto: VehicleDto) {
     return await this.driverService.vehicleReg(dto);
   }
