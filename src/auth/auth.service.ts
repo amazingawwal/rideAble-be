@@ -10,7 +10,6 @@ import ValidationDto from './dto/auth.dto';
 import { Passenger, Password } from '@prisma/client';
 import { JwtService } from '@nestjs/jwt';
 
-
 export type Pax = Passenger & { password: Password };
 // type Pass = Pax['password']
 export type Payload = {

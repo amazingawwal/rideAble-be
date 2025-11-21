@@ -18,13 +18,11 @@ export class RidesService {
       throw new BadRequestException('Pickup and destination are required');
     }
 
-    
     const route = await this.orsService.getRoute(data);
     return route;
   }
 
   async cancelRide() {
-    
     return;
   }
 }
