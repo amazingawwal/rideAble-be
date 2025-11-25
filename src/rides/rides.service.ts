@@ -22,16 +22,15 @@ export class RidesService {
 
     const driver = await this.prisma.vehicle.findFirst({
       where: {
-        status: "Active",
-        ...(data.accessibilityFeatures && { 
-  accessibilityFeature: { hasSome: data.accessibilityFeatures }
-}),
-
+        status: 'Active',
+        ...(data.accessibilityFeatures && {
+          accessibilityFeature: { hasSome: data.accessibilityFeatures },
+        }),
       },
       include: { driver: true },
     });
 
-    return {route, driver};
+    return { route, driver };
   }
 
   async cancelRide() {
