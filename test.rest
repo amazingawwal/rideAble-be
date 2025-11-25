@@ -100,11 +100,13 @@ Content-Type: application/json
 GET http://localhost:3000/registration/profile
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZW40dmljQGdtYWlsLmNvbSIsInBob25lIjoiMDgxMzQ1Njc4OSIsImlhdCI6MTc2MzA0NDAzNiwiZXhwIjoxNzYzMDQ3NjM2fQ.CyTepnhehll0XGLkfkICoKTr1TJn13a6i4x4PwQkWQY
+
 ###
 POST http://localhost:3000/rides/request
 Content-Type: application/json
 
 {
-  "pickup": [3.4505, 6.4531],
-  "destination": [3.3841, 6.5244]
+  "pickup": [-1.4663704, 53.3786278],
+  "destination": [-1.47694, 53.3213253],
+  "accessibilityFeatures":["Wheelchair_restraints"]
 }
