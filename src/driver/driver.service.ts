@@ -54,11 +54,8 @@ export class DriverService {
     if (!driver) {
       throw new NotFoundException('No details found');
     }
-    return driver.id;
+    return driver;
   }
-
-  // validation before proceeding to Vehicle reg.
-  // expiry date must be greater than current date or 3 months validity required
 
   async vehicleReg(dto: VehicleDto) {
     try {
@@ -98,7 +95,7 @@ export class DriverService {
   // }
 
   async driverSignin(driver: DriverPayload) {
-    await this.getUniqueDriver(driver.email);
+    const response = await this.getUniqueDriver(driver.email);
 
     const driverPayload = {
       sub: driver.sub,
@@ -107,7 +104,7 @@ export class DriverService {
     };
 
     return {
-      driver,
+      response,
       access_token: this.jwt.sign(driverPayload, {
         secret: process.env.DRIVER_JWT_SECRET,
         expiresIn: process.env.DRIVER_JWT_SIGN_EXP,
