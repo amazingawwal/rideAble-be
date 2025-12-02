@@ -31,7 +31,7 @@ Content-Type: application/json
 ### Get user cmfzrbdpq00008efl5q55gmdx
 GET http://localhost:3000/passenger/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzYwNTAyMzg2LCJleHAiOjE3NjA1MDU5ODZ9.4jdGmwZWFXOQp8yTAAZvHEBH4yqZepgQawhRJl1Peqk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWdyZWphN2owMDA2ZDlmNnFlN2dkYm9mIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoiU2FrZWViIEF3d2FsIiwiaWF0IjoxNzY0MzQ1NTg2LCJleHAiOjE3NjQzNDkxODZ9.ESGVMXIXADH7_3E0dvj5_bGn31cAbxCKnfIMRqBgiMc
 
 ### Passenger login
 POST http://localhost:3000/auth/login
@@ -93,18 +93,21 @@ Content-Type: application/json
 
 {
   "email": "eden4vic@gmail.com" ,
-  "phone": "0813456789"
+  "phone": "08134567891"
 }
 
 ###
 GET http://localhost:3000/registration/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZW40dmljQGdtYWlsLmNvbSIsInBob25lIjoiMDgxMzQ1Njc4OSIsImlhdCI6MTc2MzA0NDAzNiwiZXhwIjoxNzYzMDQ3NjM2fQ.CyTepnhehll0XGLkfkICoKTr1TJn13a6i4x4PwQkWQY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZW40dmljQGdtYWlsLmNvbSIsInBob25lIjoiMDgxMzQ1Njc4OSIsImlhdCI6MTc2NDM0NTM5OSwiZXhwIjoxNzY0MzQ4OTk5fQ.9fX9ITtMsizDPsX3u0DRcg8t5XaIsqWygDSqjlxi41s
+
+
 ###
 POST http://localhost:3000/rides/request
 Content-Type: application/json
 
 {
-  "pickup": [3.4505, 6.4531],
-  "destination": [3.3841, 6.5244]
+  "pickup": [-1.4663704, 53.3786278],
+  "destination": [-1.47694, 53.3213253],
+  "accessibilityFeatures":["Wheelchair_restraints"]
 }
