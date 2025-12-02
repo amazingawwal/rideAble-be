@@ -77,7 +77,7 @@ export class AuthService {
       name: pax.name,
     };
     return {
-      pax,
+      response: pax,
       access_token: this.jwt.sign(payload, {
         secret: process.env.JWT_SECRET,
         expiresIn: process.env.JWT_SIGN_EXP,
