@@ -96,6 +96,10 @@ export class DriverService {
 
   async driverSignin(driver: DriverPayload) {
     const response = await this.getUniqueDriver(driver.email);
+    
+    if(response.phone !== driver.phone){
+      throw new NotFoundException('Please, enter your correct phone number');
+    }
 
     const driverPayload = {
       sub: driver.sub,

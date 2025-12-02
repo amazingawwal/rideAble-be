@@ -3,7 +3,6 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { DriverPayload, DriverService } from '../driver.service';
 
-
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt-driver') {
   constructor(private readonly driverService: DriverService) {
@@ -15,9 +14,9 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt-driver') {
   }
 
   async validate(payload: DriverPayload) {
-    const driver = await this.driverService.getUniqueDriver(payload.email)
+    const driver = await this.driverService.getUniqueDriver(payload.email);
     // console.log(payload);
     // return { userId: payload.sub, email: payload.email, name: payload.phone };
-    return {  driver };
+    return { driver };
   }
 }

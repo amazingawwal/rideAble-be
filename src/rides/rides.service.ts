@@ -20,7 +20,7 @@ export class RidesService {
 
     const route = await this.orsService.getRoute(data);
 
-    const driver = await this.prisma.vehicle.findFirst({
+    const vehicle = await this.prisma.vehicle.findFirst({
       where: {
         status: 'Active',
         ...(data.accessibilityFeatures && {
@@ -30,7 +30,7 @@ export class RidesService {
       include: { driver: true },
     });
 
-    return { route, driver };
+    return { route, vehicle };
   }
 
   async cancelRide() {
